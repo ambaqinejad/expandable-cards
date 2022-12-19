@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --border-radius: 5rem;
+  --image-scale: 0.5;
+  --card-width: 8%;
+  --active-card-width: 60%;
+  --card-height: 80vh;
+  --transition-time: 0.3s;
+  --card-icon-bottom: 30px;
+  --card-icon-left: 50%;
+  --active-card-icon-left: 4rem;
+}
+
+body {
+  background: rgb(27, 19, 84);
+  background: linear-gradient(
+    235deg,
+    rgba(27, 19, 84, 1) 0%,
+    rgba(14, 8, 60, 1) 50%,
+    rgba(2, 1, 14, 1) 100%
+  );
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Dancing Script", cursive;
+}
+
+.container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.card {
+  width: var(--card-width);
+  transition: all var(--transition-time) linear;
+  position: relative;
+}
+
+.card:hover {
+  width: var(--active-card-width);
+}
+
+.card .card-icon-container {
+  position: absolute;
+  background-color: rgb(26, 13, 71);
+  border-radius: 50%;
+  padding: 10px;
+  border: 5px solid white;
+  bottom: var(--card-icon-bottom);
+  left: var(--card-icon-left);
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.card:hover .card-icon-container {
+  border-radius: 2rem;
+  left: var(--active-card-icon-left);
+  transform: translateX(0);
+}
+
+.card .card-icon-container > span {
+  color: white;
+  margin: 10px;
+  display: none;
+}
+
+.card:hover .card-icon-container > span {
+  display: block;
+  opacity: 0;
+  animation: fade 1s linear 0.5s forwards;
+}
+
+.card p {
+  position: absolute;
+  color: white;
+  bottom: 30%;
+  z-index: 12;
+  padding: 3rem;
+  font-size: 1.7rem;
+  display: none;
+  text-align: justify;
+}
+
+.card:hover p {
+  display: block;
+  opacity: 0;
+  animation: fade 1s linear 0.5s forwards;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.card .card-image {
+  width: 100%;
+  height: var(--card-height);
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--border-radius);
+  border: 2px solid white;
+}
+
+.card:hover .card-image {
+  filter: brightness(50%);
+}
